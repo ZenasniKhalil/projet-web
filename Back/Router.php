@@ -11,7 +11,7 @@ class Router
     {
         $this->routes[] = [
             'method' => strtoupper($method),
-            'path' => $this->formatPath($path),
+            'path' => $path,
             'handler' => $handler,
         ];
     }
@@ -24,17 +24,14 @@ class Router
         $method = $_SERVER['REQUEST_METHOD'];
         $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-        // Headers CORS
-        header("Access-Control-Allow-Origin: *");
-		// Permet les requêtes AJAX entre domaines différents (Access-Control-Allow-Origin: *).
+        // 🔹 Headers CORS
+        header("Access-Control-Allow-Origin: http://127.0.0.1:5500");
+        header("Access-Control-Allow-Credentials : true");
         header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
-		// Spécifie les méthodes HTTP autorisées
         header("Access-Control-Allow-Headers: Content-Type, Authorization");
         header("Content-Type: application/json");
-		// Permet l’envoi de requêtes avec JSON
 
-        // OPTIONS Request (Préflight CORS)
-		// On répond avec un code 204 (No Content) pour valider la requête et permettre au navigateur de continuer.
+        // 🔹 OPTIONS Request (Préflight CORS)
         if ($method === "OPTIONS") {
             http_response_code(204);
             exit;
@@ -42,23 +39,21 @@ class Router
 
         foreach ($this->routes as $route) {
             $params = $this->matchRoute($route['path'], $path);
-            if ($route['method'] === $method && $params !== false) {
+            
+            if ($params !== false && $route['method'] === $method) {
+                // 🔹 Gestion des requêtes PUT et DELETE
+                if ($method === "PUT" || $method === "DELETE") {
+                    $_POST = json_decode(file_get_contents("php://input"), true) ?? [];
+                }
+
                 call_user_func($route['handler'], $params);
                 return;
             }
         }
 
-        // Route non trouvée
+        // 🔴 Route non trouvée
         http_response_code(404);
         echo json_encode(['error' => 'Route not found']);
-    }
-
-    /**
-     * Formate une URL en remplaçant les paramètres dynamiques
-     */
-    private function formatPath(string $path): string
-    {
-        return preg_replace('/\{[a-zA-Z0-9_]+\}/', '([^/]+)', str_replace('/', '\/', $path));
     }
 
     /**
@@ -66,10 +61,35 @@ class Router
      */
     private function matchRoute(string $routePath, string $requestPath)
     {
-        if (preg_match("/^$routePath$/", $requestPath, $matches)) {
-            array_shift($matches);
-            return $matches;
+        // Convertir les segments de chemin en tableau
+        $routeSegments = explode('/', trim($routePath, '/'));
+        $requestSegments = explode('/', trim($requestPath, '/'));
+        
+        // Vérifier si le nombre de segments correspond
+        if (count($routeSegments) !== count($requestSegments)) {
+            return false;
         }
-        return false;
+        
+        $params = [];
+        
+        // Comparer chaque segment
+        foreach ($routeSegments as $index => $routeSegment) {
+            // Si c'est un paramètre dynamique {xxx}
+            if (preg_match('/^\{([a-zA-Z0-9_]+)\}$/', $routeSegment, $matches)) {
+                $paramName = $matches[1];
+                $params[$paramName] = $requestSegments[$index];
+                // Stocker aussi dans un index numérique pour compatibilité
+                $params[] = $requestSegments[$index];
+            } 
+            // Sinon, c'est un segment fixe qui doit correspondre exactement
+            elseif ($routeSegment !== $requestSegments[$index]) {
+                return false;
+            }
+        }
+        
+        // Ajouter la correspondance complète à l'index 0
+        $params[0] = '/' . implode('/', $requestSegments);
+        
+        return $params;
     }
 }

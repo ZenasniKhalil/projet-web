@@ -1,0 +1,4 @@
+RewriteEngine On
+
+# Rediriger /recette/{id} vers recipe-detail.html
+RewriteRule ^recette/([0-9a-zA-Z]+)$ /Front/recipe-detail.html [L]

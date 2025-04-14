@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title id="theMainTitle"></title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="#" id="brand">Cuisine Mondiale</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html" id="recipesLink"
+                >Recettes</a
+              >
+            </li>
+            <li class="nav-item admin-only" style="display: none">
+              <a class="nav-link" href="#" id="usersLink">Utilisateurs</a>
+            </li>
+            <li class="nav-item chef-only" style="display: none">
+              <a class="nav-link" href="#" id="addRecipeLink"
+                >Ajouter Recette</a
+              >
+            </li>
+          </ul>
+          <div class="d-flex align-items-center gap-3">
+            <button class="btn btn-outline-secondary" id="languageToggle">
+              <i class="bi bi-globe"></i> FR/EN
+            </button>
+            <div class="auth-buttons">
+              <button class="btn btn-outline-primary me-2" id="loginBtn">
+                Connexion
+              </button>
+              <button class="btn btn-primary" id="registerBtn">
+                Inscription
+              </button>
+            </div>
+            <div class="user-menu" style="display: none">
+              <div class="dropdown">
+                <button
+                  class="btn btn-outline-secondary dropdown-toggle"
+                  type="button"
+                  id="userMenuButton"
+                  data-bs-toggle="dropdown"
+                >
+                  <span id="username">User</span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="#" id="profileLink"
+                      >Profil</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#" id="logoutBtn"
+                      >Déconnexion</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container py-4">
+      <div id="recipeDetailView">
+        <div class="row">
+          <div class="col-md-8">
+            <h2 id="recipeDetailTitle"></h2>
+            <img
+              id="recipeDetailImage"
+              src="https://static01.nyt.com/images/2024/01/10/multimedia/ND-Shoyu-Ramen-qflv/ND-Shoyu-Ramen-qflv-videoSixteenByNineJumbo1600.jpg"
+              alt="Image de la recette"
+              class="img-fluid mb-3"
+            />
+            <p id="recipeDetailDescription"></p>
+            <h4>Ingrédients</h4>
+            <ul id="recipeDetailIngredients"></ul>
+            <h4>Étapes</h4>
+            <ol id="recipeDetailSteps"></ol>
+            <h4>
+              Temps total : <span id="recipeDetailTotalTime"></span> minutes
+            </h4>
+          </div>
+          <div class="col-md-4">
+            <h4>Commentaires</h4>
+            <div id="recipeDetailComments"></div>
+            <h4>Photos</h4>
+            <div id="recipeDetailPhotos"></div>
+            <button class="btn btn-primary mt-2" id="addCommentBtn">
+              Ajouter un Commentaire
+            </button>
+            <button class="btn btn-secondary mt-2" id="addPhotoBtn">
+              Ajouter une Photo
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/detail.js"></script>
+  </body>
+</html>

@@ -1,54 +1,67 @@
 <?php
-require_once __DIR__ . "/core/Router.php";
-require_once __DIR__ . "/controllers/AuthController.php";
-require_once __DIR__ . "/controllers/RecipeController.php";
-require_once __DIR__ . "/controllers/AdminController.php";
-require_once __DIR__ . "/controllers/InteractionController.php";
+require_once __DIR__ . "/Router.php";
+require_once __DIR__ . "/Controllers/AuthController.php";
+require_once __DIR__ . "/Controllers/RecipeController.php";
+require_once __DIR__ . "/Controllers/AdminController.php";
+#require_once __DIR__ . "/Controllers/InteractionController.php";
 
 $router = new Router();
 
-// ## 🔹 AUTHENTIFICATION (Users)
-// $router->register('POST', '/register', function () {
-//     (new AuthController())->register();
-// });
 
-// $router->register('POST', '/login', function () {
-//     (new AuthController())->login();
-// });
+## 🔹 AUTHENTIFICATION (Users)
+$router->register('POST', '/register', function () {
+    (new AuthController(__DIR__ . '/Data/users.json'))->register();
+});
 
-// $router->register('GET', '/logout', function () {
-//     (new AuthController())->logout();
-// });
+$router->register('POST', '/login', function () {
+    (new AuthController(__DIR__ . '/Data/users.json'))->login();
+});
+
+$router->register('GET', '/auth', function () {
+    (new AuthController(__DIR__ . '/Data/users.json'))->isAuthenticated();
+});
+
+$router->register('GET', '/logout', function () {
+    (new AuthController(__DIR__ . '/Data/users.json'))->logout();
+});
+
+$router->register('GET', '/info', function () {
+    (new AuthController(__DIR__ . '/Data/users.json'))->info();
+});
 
 // ## 🔹 GESTION DES RECETTES
-// $router->register('GET', '/recettes', function () {
-//     (new RecetteController())->getAll();
-// });
+ $router->register('GET', '/recettes', function () {
+     (new RecetteController())->getAll();
+});
 
-// $router->register('GET', '/recette/{id}', function ($params) {
-//     (new RecetteController())->getOne($params[0]);
-// });
+ $router->register('GET', '/recette/{id}', function ($params) {
+     (new RecetteController())->getOne($params['id']);
+});
 
-// $router->register('POST', '/recette/add', function () {
-//     (new RecetteController())->add();
-// });
+$router->register('POST', '/recette/add', function () {
+     (new RecetteController())->add();
+});
+
+$router->register('PUT', '/recette/translate/{id}', function ($params) {
+    (new RecetteController())->addTranslation($params['id']);
+});
 
 // $router->register('PUT', '/recette/update/{id}', function ($params) {
 //     (new RecetteController())->update($params[0]);
 // });
 
-// $router->register('DELETE', '/recette/delete/{id}', function ($params) {
-//     (new RecetteController())->delete($params[0]);
-// });
+$router->register('DELETE', '/recette/delete/{id}', function ($params) {
+    (new RecetteController())->delete($params['id']);
+});
 
 // ## 🔹 GESTION DES UTILISATEURS (Admin)
 // $router->register('GET', '/admin/users', function () {
 //     (new AdminController())->getUsers();
 // });
 
-// $router->register('POST', '/admin/changeRole/{id}', function ($params) {
-//     (new AdminController())->changeRole($params[0]);
-// });
+$router->register('POST', '/admin/changeRole/{email}', function ($params) {
+    (new AdminController())->changeRole($params['email']);
+});
 
 // ## 🔹 INTERACTIONS (Commentaires, Likes, Photos)
 // $router->register('POST', '/recette/{id}/comment', function ($params) {
