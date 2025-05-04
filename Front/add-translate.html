@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ajouter une Recette</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="/" id="brand">Cuisine Mondiale</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item admin-only" style="display: none">
+              <a class="nav-link" href="#" id="usersLink">Utilisateurs</a>
+            </li>
+            <li class="nav-item chef-only">
+              <a class="nav-link active" href="#" id="addRecipeLink"
+                >Ajouter Recette</a
+              >
+            </li>
+          </ul>
+          <div class="d-flex align-items-center gap-3">
+            <button class="btn btn-outline-secondary" id="languageToggle">
+              <i class="bi bi-globe"></i> FR/EN
+            </button>
+            <div class="auth-buttons">
+              <a
+                href="/profile.html"
+                class="btn btn-outline-info me-2 hidden"
+                id="profileBtn"
+              >
+              </a>
+              <button class="btn btn-outline-primary me-2 hidden" id="loginBtn">
+                Connexion
+              </button>
+              <button class="btn btn-primary hidden" id="registerBtn">
+                Inscription
+              </button>
+              <button class="btn btn-outline-danger me-2 hidden" id="logoutBtn">
+                Logout
+              </button>
+              <a href="" class="btn btn-outline-danger me-2 hidden"></a>
+            </div>
+            <div class="user-menu" style="display: none">
+              <div class="dropdown">
+                <button
+                  class="btn btn-outline-secondary dropdown-toggle"
+                  type="button"
+                  id="userMenuButton"
+                  data-bs-toggle="dropdown"
+                >
+                  <span id="username">User</span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="#" id="profileLink"
+                      >Profil</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#" id="logoutBtn"
+                      >Déconnexion</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container py-4">
+      <div id="recipeFormView">
+        <h2>Traduire Cette Recette en FR</h2>
+        <form id="recipeForm">
+          <div class="mb-3">
+            <label for="title" class="form-label">Titre</label>
+            <input
+              type="text"
+              class="form-control"
+              id="title"
+              name="title"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="ingredients" class="form-label"
+              >Ingrédients (séparés par des virgules)</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="ingredients"
+              name="ingredients"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="steps" class="form-label"
+              >Étapes (séparées par des points-virgules)</label
+            >
+            <textarea
+              class="form-control"
+              id="steps"
+              name="steps"
+              rows="5"
+              required
+            ></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Enregistrer</button>
+        </form>
+      </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/translate.js"></script>
+    <script src="js/show.js"></script>
+    <script src="js/show2.js"></script>
+    <script src="js/auth.js"></script>
+  </body>
+</html>

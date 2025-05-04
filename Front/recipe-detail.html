@@ -18,7 +18,7 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
       <div class="container">
-        <a class="navbar-brand fw-bold" href="#" id="brand">Cuisine Mondiale</a>
+        <a class="navbar-brand fw-bold" href="/" id="brand">Cuisine Mondiale</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -29,11 +29,6 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav me-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html" id="recipesLink"
-                >Recettes</a
-              >
-            </li>
             <li class="nav-item admin-only" style="display: none">
               <a class="nav-link" href="#" id="usersLink">Utilisateurs</a>
             </li>
@@ -44,15 +39,20 @@
             </li>
           </ul>
           <div class="d-flex align-items-center gap-3">
-            <button class="btn btn-outline-secondary" id="languageToggle">
-              <i class="bi bi-globe"></i> FR/EN
-            </button>
             <div class="auth-buttons">
-              <button class="btn btn-outline-primary me-2" id="loginBtn">
+              <a class="btn btn-outline-info me-2 hidden" id="TranslateBtn">
+                Translate This Recipe
+              </a>
+              <button class="btn btn-info me-2 hidden" id="FRBtn">FR</button>
+              <button class="btn btn-info me-2 hidden" id="ENBtn">EN</button>
+              <button class="btn btn-outline-primary me-2 hidden" id="loginBtn">
                 Connexion
               </button>
-              <button class="btn btn-primary" id="registerBtn">
+              <button class="btn btn-primary hidden" id="registerBtn">
                 Inscription
+              </button>
+              <button class="btn btn-outline-danger me-2 hidden" id="logoutBtn">
+                Logout
               </button>
             </div>
             <div class="user-menu" style="display: none">
@@ -84,37 +84,81 @@
       </div>
     </nav>
 
-    <main class="container py-4">
-      <div id="recipeDetailView">
+    <main class="container py-5">
+      <div id="recipeDetailView" class="bg-white p-4 rounded shadow-sm">
+        <!-- Titre et image -->
+        <div class="mb-4 text-center">
+          <h2 id="recipeDetailTitle" class="fw-bold mb-3"></h2>
+          <img
+            id="recipeDetailImage"
+            src="https://via.placeholder.com/800x400"
+            alt="Image de la recette"
+            class="img-fluid rounded"
+            style="max-height: 400px; object-fit: cover"
+          />
+        </div>
+
+        <!-- Like -->
+        <div class="mb-4 text-center">
+          <button class="btn btn-outline-danger btn-sm" id="likeBtn">
+            <i class="bi bi-heart"></i> J’aime
+          </button>
+          <span id="likeCount" class="ms-2">0 j’aime</span>
+        </div>
+
+        <!-- Détails -->
         <div class="row">
-          <div class="col-md-8">
-            <h2 id="recipeDetailTitle"></h2>
-            <img
-              id="recipeDetailImage"
-              src="https://static01.nyt.com/images/2024/01/10/multimedia/ND-Shoyu-Ramen-qflv/ND-Shoyu-Ramen-qflv-videoSixteenByNineJumbo1600.jpg"
-              alt="Image de la recette"
-              class="img-fluid mb-3"
-            />
-            <p id="recipeDetailDescription"></p>
-            <h4>Ingrédients</h4>
-            <ul id="recipeDetailIngredients"></ul>
-            <h4>Étapes</h4>
-            <ol id="recipeDetailSteps"></ol>
-            <h4>
-              Temps total : <span id="recipeDetailTotalTime"></span> minutes
-            </h4>
+          <!-- Moins prioritaire : commentaires & photos -->
+          <div class="col-md-6 order-md-2 mb-4">
+            <div class="mb-4">
+              <h5 class="text-muted">📸 Photos</h5>
+              <div id="recipeDetailPhotos" class="border rounded p-3 bg-light">
+                Photos à implémenter
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <h5 class="text-muted">💬 Commentaires</h5>
+              <div
+                id="recipeDetailComments"
+                class="border rounded p-3 bg-light"
+              >
+                Commentaires à implémenter
+              </div>
+            </div>
+
+            <div class="d-flex gap-2">
+              <button class="btn btn-outline-secondary" id="addCommentBtn">
+                <i class="bi bi-chat-dots"></i> Commentaire
+              </button>
+              <button class="btn btn-outline-primary" id="addPhotoBtn">
+                <i class="bi bi-image"></i> Photo
+              </button>
+            </div>
           </div>
-          <div class="col-md-4">
-            <h4>Commentaires</h4>
-            <div id="recipeDetailComments"></div>
-            <h4>Photos</h4>
-            <div id="recipeDetailPhotos"></div>
-            <button class="btn btn-primary mt-2" id="addCommentBtn">
-              Ajouter un Commentaire
-            </button>
-            <button class="btn btn-secondary mt-2" id="addPhotoBtn">
-              Ajouter une Photo
-            </button>
+
+          <!-- Partie importante : ingrédients et étapes -->
+          <div class="col-md-6 order-md-1 border-end pt-md-0 pe-md-4">
+            <div class="mb-4">
+              <h5 class="text-muted">🧾 Ingrédients</h5>
+              <ul
+                id="recipeDetailIngredients"
+                class="list-group list-group-flush"
+              ></ul>
+            </div>
+
+            <div class="mb-4">
+              <h5 class="text-muted">🛠 Étapes</h5>
+              <ol
+                id="recipeDetailSteps"
+                class="list-group list-group-numbered"
+              ></ol>
+            </div>
+
+            <div class="mb-4">
+              <h5 class="text-muted">⏱ Temps total</h5>
+              <p><strong id="recipeDetailTotalTime"></strong> minutes</p>
+            </div>
           </div>
         </div>
       </div>
@@ -122,5 +166,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/detail.js"></script>
+    <script src="js/show.js"></script>
+    <script src="js/show2.js"></script>
+    <script src="js/auth.js"></script>
   </body>
 </html>

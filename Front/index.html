@@ -18,7 +18,7 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
       <div class="container">
-        <a class="navbar-brand fw-bold" href="#" id="brand">Cuisine Mondiale</a>
+        <a class="navbar-brand fw-bold" href="/" id="brand">Cuisine Mondiale</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -28,33 +28,35 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav me-auto">
-            <li class="nav-item">
-              <a class="nav-link active" href="#" id="recipesLink">Recettes</a>
-            </li>
-            <li class="nav-item admin-only" style="display: none">
-              <a class="nav-link" href="#" id="usersLink">Utilisateurs</a>
-            </li>
-            <li class="nav-item chef-only" style="display: none">
-              <a class="nav-link" href="#" id="addRecipeLink"
-                >Ajouter Recette</a
-              >
-            </li>
-          </ul>
+          <ul class="navbar-nav me-auto"></ul>
           <div class="d-flex align-items-center gap-3">
             <!-- <button class="btn btn-outline-secondary" id="languageToggle">
                         <i class="bi bi-globe"></i> FR/EN
                     </button> -->
             <div class="auth-buttons">
-              <button class="btn btn-outline-primary me-2" id="loginBtn">
+              <a
+                href="profile.html"
+                class="btn btn-outline-info me-2 hidden"
+                id="profileBtn"
+              >
+              </a>
+              <a
+                href="recipe-form.html"
+                class="btn btn-outline-success me-2 hidden"
+                id="addRecipeBtn"
+              >
+                Add Recipe
+              </a>
+              <button class="btn btn-outline-primary me-2 hidden" id="loginBtn">
                 Connexion
               </button>
-              <button class="btn btn-primary" id="registerBtn">
+              <button class="btn btn-primary hidden" id="registerBtn">
                 Inscription
               </button>
-              <button class="btn btn-outline-danger me-2" id="logoutBtn">
+              <button class="btn btn-outline-danger me-2 hidden" id="logoutBtn">
                 Logout
               </button>
+              <a href="" class="btn btn-outline-danger me-2 hidden"></a>
             </div>
             <div class="user-menu" style="display: none">
               <div class="dropdown">
@@ -109,35 +111,6 @@
                 style="display: none"
               >
                 <i class="bi bi-plus-lg"></i> Nouvelle Recette
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="row mb-4">
-          <div class="col-12">
-            <div class="d-flex gap-2 flex-wrap">
-              <button
-                class="btn btn-outline-secondary"
-                data-filter="gluten-free"
-              >
-                Sans Gluten
-              </button>
-              <button class="btn btn-outline-secondary" data-filter="vegan">
-                Vegan
-              </button>
-              <button
-                class="btn btn-outline-secondary"
-                data-filter="vegetarian"
-              >
-                Végétarien
-              </button>
-              <button
-                class="btn btn-outline-secondary admin-only"
-                data-filter="unpublished"
-                style="display: none"
-              >
-                Non Publiées
               </button>
             </div>
           </div>
@@ -344,5 +317,6 @@
     <script src="js/app.js"></script>
     <script src="js/recipes.js"></script>
     <script src="js/show.js"></script>
+    <script src="js/show2.js"></script>
   </body>
 </html>

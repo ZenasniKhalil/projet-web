@@ -25,15 +25,15 @@ class Router
         $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
         // 🔹 Headers CORS
-        header("Access-Control-Allow-Origin: http://127.0.0.1:5500");
-        header("Access-Control-Allow-Credentials : true");
+        header("Access-Control-Allow-Origin: http://localhost:5500");
+        header("Access-Control-Allow-Credentials: true");
         header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
         header("Access-Control-Allow-Headers: Content-Type, Authorization");
         header("Content-Type: application/json");
 
         // 🔹 OPTIONS Request (Préflight CORS)
         if ($method === "OPTIONS") {
-            http_response_code(204);
+            http_response_code(200);
             exit;
         }
 

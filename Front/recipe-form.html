@@ -18,7 +18,7 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
       <div class="container">
-        <a class="navbar-brand fw-bold" href="#" id="brand">Cuisine Mondiale</a>
+        <a class="navbar-brand fw-bold" href="/" id="brand">Cuisine Mondiale</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -29,11 +29,6 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav me-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html" id="recipesLink"
-                >Recettes</a
-              >
-            </li>
             <li class="nav-item admin-only" style="display: none">
               <a class="nav-link" href="#" id="usersLink">Utilisateurs</a>
             </li>
@@ -48,12 +43,22 @@
               <i class="bi bi-globe"></i> FR/EN
             </button>
             <div class="auth-buttons">
-              <button class="btn btn-outline-primary me-2" id="loginBtn">
+              <a
+                href="/profile.html"
+                class="btn btn-outline-info me-2 hidden"
+                id="profileBtn"
+              >
+              </a>
+              <button class="btn btn-outline-primary me-2 hidden" id="loginBtn">
                 Connexion
               </button>
-              <button class="btn btn-primary" id="registerBtn">
+              <button class="btn btn-primary hidden" id="registerBtn">
                 Inscription
               </button>
+              <button class="btn btn-outline-danger me-2 hidden" id="logoutBtn">
+                Logout
+              </button>
+              <a href="" class="btn btn-outline-danger me-2 hidden"></a>
             </div>
             <div class="user-menu" style="display: none">
               <div class="dropdown">
@@ -86,10 +91,10 @@
 
     <main class="container py-4">
       <div id="recipeFormView">
-        <h2>Ajouter une Recette</h2>
+        <h2>Add Recipe</h2>
         <form id="recipeForm">
           <div class="mb-3">
-            <label for="title" class="form-label">Titre</label>
+            <label for="title" class="form-label">Title</label>
             <input
               type="text"
               class="form-control"
@@ -106,7 +111,7 @@
 
           <div class="mb-3">
             <label for="ingredients" class="form-label"
-              >Ingrédients (séparés par des virgules)</label
+              >Ingredients (separated by commas)</label
             >
             <input
               type="text"
@@ -118,7 +123,7 @@
           </div>
           <div class="mb-3">
             <label for="steps" class="form-label"
-              >Étapes (séparées par des points-virgules)</label
+              >Steps (separated by semicolons)</label
             >
             <textarea
               class="form-control"
@@ -149,5 +154,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/form.js"></script>
+    <script src="js/show.js"></script>
+    <script src="js/show2.js"></script>
+    <script src="js/auth.js"></script>
   </body>
 </html>

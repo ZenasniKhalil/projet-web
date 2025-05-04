@@ -2,6 +2,7 @@
 
 const loginForm = document.getElementById("loginForm");
 const registerForm = document.getElementById("registerForm");
+const logoutBtn = document.getElementById("logoutBtn");
 
 if (loginForm) {
   loginForm.addEventListener("submit", (event) => {
@@ -16,12 +17,16 @@ if (loginForm) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ email, password }),
+      credentials: "include",
     })
-      .then((response) => {
-        return response.text().then((text) => {
-          console.log(text);
-          //window.location.href = "index.html";
-        });
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.error) {
+          alert("Erreur : " + data.error);
+        } else {
+          //console.log("Utilisateur connecté :", data.user.role);
+          window.location.href = "index.html";
+        }
       })
       .catch((error) => {
         console.error("Erreur lors de la connexion:", error);
@@ -54,6 +59,23 @@ if (registerForm) {
       })
       .catch((error) => {
         console.error("Erreur lors de l'inscription:", error);
+      });
+  });
+}
+
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", () => {
+    fetch("http://localhost:8080/logout", {
+      method: "GET",
+      credentials: "include",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        localStorage.removeItem("user"); // si tu stockes des infos côté front
+        window.location.href = "index.html"; // redirige vers la page de connexion
+      })
+      .catch((error) => {
+        console.error("Erreur lors de la déconnexion :", error);
       });
   });
 }

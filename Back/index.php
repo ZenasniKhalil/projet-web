@@ -1,9 +1,10 @@
 <?php
+
 require_once __DIR__ . "/Router.php";
 require_once __DIR__ . "/Controllers/AuthController.php";
 require_once __DIR__ . "/Controllers/RecipeController.php";
 require_once __DIR__ . "/Controllers/AdminController.php";
-#require_once __DIR__ . "/Controllers/InteractionController.php";
+require_once __DIR__ . "/Controllers/InteractionController.php";
 
 $router = new Router();
 
@@ -52,6 +53,18 @@ $router->register('PUT', '/recette/translate/{id}', function ($params) {
 
 $router->register('DELETE', '/recette/delete/{id}', function ($params) {
     (new RecetteController())->delete($params['id']);
+});
+
+$router->register('POST', '/recette/{id}/like', function ($params) {
+    (new InteractionController())->addLike($params['id']);
+});
+
+$router->register('GET', '/recette/{id}/likes', function ($params) {
+    (new InteractionController())->countLikes($params['id']);
+});
+
+$router->register('GET', '/recette/{id}/liked', function ($params) {
+    (new InteractionController())->hasLiked($params['id']);
 });
 
 // ## 🔹 GESTION DES UTILISATEURS (Admin)

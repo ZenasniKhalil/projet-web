@@ -1,4 +1,3 @@
-// detail.js
 const theMainTitle = document.getElementById("theMainTitle");
 const recipeDetailTitle = document.getElementById("recipeDetailTitle");
 const recipeDetailImage = document.getElementById("recipeDetailImage");
@@ -12,70 +11,147 @@ const recipeDetailSteps = document.getElementById("recipeDetailSteps");
 const recipeDetailTotalTime = document.getElementById("recipeDetailTotalTime");
 const recipeDetailComments = document.getElementById("recipeDetailComments");
 const recipeDetailPhotos = document.getElementById("recipeDetailPhotos");
+TranslateBtn = document.getElementById("TranslateBtn");
 
-// Fonction pour récupérer l'ID de la recette depuis l'URL
+const frBtn = document.getElementById("FRBtn");
+const enBtn = document.getElementById("ENBtn");
+
+// 🧠 On stocke la recette globalement
+let currentRecipe = null;
+
+// 🔄 Récupère l'ID de recette depuis l'URL
 function getRecipeIdFromUrl() {
   const urlParams = new URLSearchParams(window.location.search);
-  console.log(urlParams.get("id"));
   return urlParams.get("id");
 }
 
-// Fonction pour récupérer les détails de la recette depuis le serveur
+// 🔄 Récupère la recette et l'affiche en anglais par défaut
 function fetchRecipeDetails(id) {
-  fetch(`http://localhost:8080/recette/${id}`) // Remplacez par l'URL de votre API
+  fetch(`http://localhost:8080/recette/${id}`)
     .then((response) => response.json())
     .then((recipe) => {
-      displayRecipeDetails(recipe);
+      if (recipe.nameFR) {
+        frBtn.classList.remove("hidden");
+        enBtn.classList.remove("hidden");
+      }
+      if (TranslateBtn) {
+        TranslateBtn.href = `/add-translate.html?id=${recipe.id}`;
+      }
+      currentRecipe = recipe;
+      displayRecipeDetails(recipe, "en"); // Par défaut anglais
     })
-    .catch((error) =>
-      console.error(
-        "Erreur lors de la récupération des détails de la recette:",
-        error
-      )
-    );
+    .catch((error) => console.error("Erreur lors de la récupération :", error));
 }
 
-// Fonction pour afficher les détails de la recette
-function displayRecipeDetails(recipe) {
-  if (recipeDetailTitle) recipeDetailTitle.textContent = recipe.name;
-  if (theMainTitle) theMainTitle.textContent = recipe.name;
-  if (recipeDetailImage) recipeDetailImage.src = recipe.imageURL;
-  if (recipeDetailDescription)
-    recipeDetailDescription.textContent = recipe.description;
+// 🧾 Affiche les détails selon la langue
+function displayRecipeDetails(recipe, lang = "en") {
+  const name = lang === "fr" ? recipe.nameFR || recipe.name : recipe.name;
+  const ingredients =
+    lang === "fr"
+      ? recipe.ingredientsFR || recipe.ingredients
+      : recipe.ingredients;
+  const steps = lang === "fr" ? recipe.stepsFR || recipe.steps : recipe.steps;
 
-  if (recipeDetailIngredients) {
+  if (recipeDetailTitle) recipeDetailTitle.textContent = name;
+  if (theMainTitle) theMainTitle.textContent = name;
+  if (recipeDetailImage) recipeDetailImage.src = recipe.imageURL || "";
+  if (recipeDetailDescription)
+    recipeDetailDescription.textContent = recipe.description || "";
+
+  if (recipeDetailIngredients && Array.isArray(ingredients)) {
     recipeDetailIngredients.innerHTML = "";
-    recipe.ingredients.forEach((ingredient) => {
+    ingredients.forEach((ingredient) => {
       const li = document.createElement("li");
-      li.innerHTML = `<b>the ingredient</b> : ${ingredient.name}, <b>quantity</b> : ${ingredient.quantity}, <b>type</b> : ${ingredient.type}`;
+      if (typeof ingredient === "string") {
+        li.textContent = ingredient;
+      } else {
+        if (lang === "fr") {
+          li.innerHTML = `<b>Ingrédient</b> : ${ingredient.name}, <b>Quantité</b> : ${ingredient.quantity}, <b>Type</b> : ${ingredient.type}`;
+        } else {
+          li.innerHTML = `<b>Ingredient</b> : ${ingredient.name}, <b>Quantity</b> : ${ingredient.quantity}, <b>Type</b> : ${ingredient.type}`;
+        }
+      }
       recipeDetailIngredients.appendChild(li);
     });
   }
 
-  if (recipeDetailSteps) {
+  if (recipeDetailSteps && Array.isArray(steps)) {
     recipeDetailSteps.innerHTML = "";
-    recipe.steps.forEach((step) => {
+    steps.forEach((step) => {
       const li = document.createElement("li");
-      li.textContent = `${step}`;
+      li.textContent = step;
       recipeDetailSteps.appendChild(li);
     });
   }
 
-  if (recipeDetailTotalTime) recipeDetailTotalTime.textContent = recipe.timers;
+  if (recipeDetailTotalTime) {
+    recipeDetailTotalTime.textContent = Array.isArray(recipe.timers)
+      ? recipe.timers.join(" min, ") + " min"
+      : recipe.timers + " min";
+  }
 
-  //  Afficher les commentaires et les photos (à implémenter)
   if (recipeDetailComments) {
     recipeDetailComments.textContent = "Commentaires à implémenter";
   }
+
   if (recipeDetailPhotos) {
     recipeDetailPhotos.textContent = "Photos à implémenter";
   }
 }
 
-// Initialisation
+// 🌍 Gestion des boutons de langue
+frBtn.addEventListener("click", () => {
+  if (currentRecipe) {
+    displayRecipeDetails(currentRecipe, "fr");
+  }
+});
+
+enBtn.addEventListener("click", () => {
+  if (currentRecipe) {
+    displayRecipeDetails(currentRecipe, "en");
+  }
+});
+
+// 🚀 Initialisation
 const recipeId = getRecipeIdFromUrl();
 if (recipeId) {
   fetchRecipeDetails(recipeId);
 } else {
   console.error("ID de recette non trouvé dans l'URL.");
 }
+
+// ==================== like system ============================
+const likeBtn = document.getElementById("likeBtn");
+const likeCountSpan = document.getElementById("likeCount");
+window.addEventListener("DOMContentLoaded", () => {
+  fetch(`http://localhost:8080/recette/${recipeId}/likes`)
+    .then((res) => res.json())
+    .then((data) => {
+      likeCountSpan.textContent = `${data.likes} j’aime`;
+    });
+});
+
+function refreshLikes(recipeId) {
+  fetch(`http://localhost:8080/recette/${recipeId}/liked`, {
+    credentials: "include",
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.liked) {
+        likeBtn.disabled = true;
+        likeBtn.classList.add("btn-danger");
+        likeBtn.innerHTML = `<i class="bi bi-heart-fill"></i> Aimé`;
+      }
+    });
+}
+
+likeBtn.addEventListener("click", () => {
+  fetch(`http://localhost:8080/recette/${recipeId}/like`, {
+    method: "POST",
+    credentials: "include",
+  })
+    .then((res) => res.json())
+    .then(() => {
+      refreshLikes(recipeId);
+    });
+});

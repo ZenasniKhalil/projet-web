@@ -6,7 +6,7 @@ if (recipeForm) {
   recipeForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    const nom = document.getElementById("title").value;
+    const name = document.getElementById("title").value;
     const imageURL = document.getElementById("image").value;
     const ingredients = document
       .getElementById("ingredients")
@@ -16,39 +16,33 @@ if (recipeForm) {
       .getElementById("steps")
       .value.split(";")
       .map((item) => item.trim());
-    const time = document.getElementById("time").value;
+    const timers = document.getElementById("time").value;
 
     const recipeData = {
-      nom,
+      name,
       imageURL,
       ingredients,
       steps,
-      time,
+      timers,
     };
 
-    // Envoyer les données au serveur
-    fetch("/recette/add", {
-      // Remplacez par l'URL de votre API
+    //console.log(recipeData);
+    //console.log(JSON.stringify(recipeData));
+
+    fetch("http://localhost:8080/recette/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(recipeData),
+      credentials: "include",
     })
       .then((response) => response.json())
       .then((data) => {
-        if (data.success) {
-          // Recette ajoutée avec succès
-          console.log("Recette ajoutée!", data);
-          // Rediriger ou afficher un message de succès
-          window.location.href = "index.html";
-        } else {
-          // Erreur lors de l'ajout de la recette
-          console.error("Erreur lors de l'ajout de la recette:", data.message);
-          // Afficher un message d'erreur
-        }
+        window.location.href = "index.html";
       })
       .catch((error) => {
+        window.location.href = "index.html";
         console.error("Erreur lors de l'envoi des données:", error);
       });
   });

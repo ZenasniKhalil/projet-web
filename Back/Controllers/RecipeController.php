@@ -33,16 +33,16 @@ class RecetteController {
 
 
 public function add(): void {
-    // session_start();
+    //session_start();
+    if (!isset($_SESSION['user'])) {
+        http_response_code(403);
+        echo json_encode(['error' => 'Access denied']);
+        return;
+    }
 
-    // if (!isset($_SESSION['user'])) {
-    //     http_response_code(403);
-    //     echo json_encode(['error' => 'Access denied']);
-    //     return;
-    // }
 
-    // $this->userModel = new User(); // Assure que c'est bien instancié
-    // $currentUser = $this->userModel->getByEmail($_SESSION['user']);
+
+    $currentUser = $_SESSION['user'];
 
     // if ($currentUser['role'] !== 'Chef' && $currentUser['role'] !== 'Admin') {
     //     http_response_code(403);
@@ -68,7 +68,7 @@ public function add(): void {
     $data = [
         'id' => $id,
         'name' => $input['name'],
-        'Author' => $currentUser['name'] ?? 'Unknown',
+        'Author' => $currentUser['firstname']." ".$currentUser['lastname'] ?? 'Unknown',
         'ingredients' => $input['ingredients'],
         'steps' => $input['steps'],
         'timers' => $input['timers'] ?? array_fill(0, count($input['steps']), 0),
@@ -83,19 +83,17 @@ public function add(): void {
 
 
 public function addTranslation($id): void {
-    // session_start();
-    // if (!isset($_SESSION['user'])) {
-    //     http_response_code(403);
-    //     echo json_encode(['error' => 'Access denied']);
-    //     return;
-    // }
-
-    // $currentUser = $this->userModel->getByEmail($_SESSION['user']);
-    // if (!in_array($currentUser['role'], ['Traducteur', 'Admin'])) {
-    //     http_response_code(403);
-    //     echo json_encode(['error' => 'Only translators and admins can add translations']);
-    //     return;
-    // }
+    if (!isset($_SESSION['user'])) {
+        http_response_code(403);
+        echo json_encode(['error' => 'Access denied']);
+        return;
+    }
+    $currentUser = $_SESSION['user'];
+    if (!in_array($currentUser['role'], ['Traducteur', 'Admin'])) {
+        http_response_code(403);
+        echo json_encode(['error' => 'Only translators and admins can add translations']);
+        return;
+    }
 
     $input = json_decode(file_get_contents("php://input"), true);
     if (
@@ -113,7 +111,6 @@ public function addTranslation($id): void {
 
     $recette = $this->recetteModel->getRecipeById($id);
     if (!$recette) {
-        echo "7miyan";
         http_response_code(404);
         echo json_encode(["error" => "Recette non trouvée"]);
     } else {

@@ -1,11 +1,20 @@
 <?php
+session_set_cookie_params([
+    'lifetime' => 0,
+    'path' => '/',
+    'secure' => false,
+    'httponly' => true,
+    'samesite' => 'Lax'
+]);
 session_start();
+require_once __DIR__ . "/../models/User.php";
 
 class AuthController {
     private string $filePath;
-
+    private $userModel;
     public function __construct(string $filePath) {
         $this->filePath = $filePath;
+        $this->userModel = new User();
     }
 
  
@@ -108,11 +117,19 @@ class AuthController {
         }
 
         // Stocker la session utilisateur
-        $_SESSION['user'] = $email;
-        echo $_SESSION['user'];
+        $_SESSION['user'] = [
+            'email' => $email,
+            'firstname' => $users[$email]['firstname'],
+            'lastname' => $users[$email]['lastname'],
+            'role' => $users[$email]['role']
+        ];
+        
+
 
         http_response_code(200);
-        echo json_encode(['message' => 'Login successful']);
+        echo json_encode([
+            'user' => $_SESSION['user']
+        ]);
     }
 
     // ✅ DÉCONNEXION
