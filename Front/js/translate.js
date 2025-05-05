@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("recipeForm");
-
   const recipeId = new URLSearchParams(window.location.search).get("id");
   if (!recipeId) {
     alert("ID de recette manquant.");

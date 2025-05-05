@@ -42,7 +42,6 @@ if (registerForm) {
     const email = document.getElementById("registerEmail").value;
     const password = document.getElementById("registerPassword").value;
     const role = document.querySelector('input[name="role"]:checked').value;
-    console.log(JSON.stringify({ firstname, lastname, email, password, role }));
 
     // Envoyer les données au serveur pour l'inscription
     fetch("http://localhost:8080/register", {

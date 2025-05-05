@@ -7,12 +7,12 @@ window.addEventListener("DOMContentLoaded", () => {
   })
     .then((response) => response.json())
     .then((data) => {
-      if (data.user.role === "Chef") {
+      if (data.user.role === "Chef" || data.user.role === "Admin") {
         if (addRecipe) {
           addRecipe.classList.remove("hidden");
         }
       }
-      if (data.user.role === "Traducteur") {
+      if (data.user.role === "Traducteur" || data.user.role === "Admin") {
         if (TranslateBtn) {
           TranslateBtn.classList.remove("hidden");
         }

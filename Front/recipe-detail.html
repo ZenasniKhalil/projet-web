@@ -109,31 +109,20 @@
         <!-- Détails -->
         <div class="row">
           <!-- Moins prioritaire : commentaires & photos -->
-          <div class="col-md-6 order-md-2 mb-4">
-            <div class="mb-4">
-              <h5 class="text-muted">📸 Photos</h5>
-              <div id="recipeDetailPhotos" class="border rounded p-3 bg-light">
-                Photos à implémenter
-              </div>
-            </div>
-
+          <div class="col-md-4 order-md-2 mb-4 hidden" id="commentDiv">
             <div class="mb-4">
               <h5 class="text-muted">💬 Commentaires</h5>
-              <div
-                id="recipeDetailComments"
-                class="border rounded p-3 bg-light"
-              >
-                Commentaires à implémenter
+              <div class="mb-3">
+                <ul id="commentList" class="list-group mb-3"></ul>
+                <textarea
+                  class="form-control mb-2"
+                  id="newCommentContent"
+                  placeholder="Ajouter un commentaire..."
+                ></textarea>
+                <button class="btn btn-outline-secondary" id="submitCommentBtn">
+                  <i class="bi bi-chat-dots"></i> Commentaire
+                </button>
               </div>
-            </div>
-
-            <div class="d-flex gap-2">
-              <button class="btn btn-outline-secondary" id="addCommentBtn">
-                <i class="bi bi-chat-dots"></i> Commentaire
-              </button>
-              <button class="btn btn-outline-primary" id="addPhotoBtn">
-                <i class="bi bi-image"></i> Photo
-              </button>
             </div>
           </div>
 
@@ -169,5 +158,6 @@
     <script src="js/show.js"></script>
     <script src="js/show2.js"></script>
     <script src="js/auth.js"></script>
+    <script src="js/comment.js"></script>
   </body>
 </html>

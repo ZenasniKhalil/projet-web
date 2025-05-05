@@ -1,7 +1,7 @@
 let login = document.getElementById("loginBtn");
 let register = document.getElementById("registerBtn");
 let logout = document.getElementById("logoutBtn");
-
+let commentDiv = document.getElementById("commentDiv");
 //let addRecipe = document.getElementById("addRecipeBtn");
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -12,6 +12,9 @@ window.addEventListener("DOMContentLoaded", () => {
     .then((data) => {
       if (data["user"]) {
         logout.classList.remove("hidden");
+        if (commentDiv) {
+          commentDiv.classList.remove("hidden");
+        }
       } else {
         login.classList.remove("hidden");
         register.classList.remove("hidden");
