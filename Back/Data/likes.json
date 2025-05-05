@@ -1,22 +1,14 @@
 [
     {
-        "recipeId": "1",
-        "email": "khalil@gmail.com"
-    },
-    {
-        "recipeId": "1",
-        "email": "jebril@gmail.com"
-    },
-    {
-        "recipeId": "1",
-        "email": "kader@gmail.com"
-    },
-    {
         "recipeId": "2",
-        "email": "khalil@gmail.com"
+        "email": "admin@admin.fr"
+    },
+    {
+        "recipeId": "11",
+        "email": "test3@gmail.com"
     },
     {
         "recipeId": "1",
-        "email": "khalilo@gmail.com"
+        "email": "test3@gmail.com"
     }
 ]

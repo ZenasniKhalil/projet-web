@@ -388,75 +388,6 @@
         "originalURL": "#"
     },
     {
-        "id": 8,
-        "name": "Blueberry Oatmeal Squares",
-        "ingredients": [
-            {
-                "quantity": "2-1\/2 cups",
-                "name": "rolled oats, (not instant)",
-                "type": "Baking"
-            },
-            {
-                "quantity": "1-1\/4 cups",
-                "name": "all-purpose flour",
-                "type": "Baking"
-            },
-            {
-                "quantity": "1 tbsp",
-                "name": "grated orange rind",
-                "type": "Produce"
-            },
-            {
-                "quantity": "1\/4 tsp",
-                "name": "salt",
-                "type": "Baking"
-            },
-            {
-                "quantity": "1 cup",
-                "name": "cold butter, cubed",
-                "type": "Baking"
-            },
-            {
-                "quantity": "3\/4 cup",
-                "name": "packed brown sugar",
-                "type": "Baking"
-            },
-            {
-                "quantity": "3 cups",
-                "name": "fresh blueberries",
-                "type": "Produce"
-            },
-            {
-                "quantity": "1\/2 cup",
-                "name": "granulated sugar",
-                "type": "Baking"
-            },
-            {
-                "quantity": "1\/3 cup",
-                "name": "orange juice",
-                "type": "Produce"
-            },
-            {
-                "quantity": "4 tsp",
-                "name": "cornstarch",
-                "type": "Baking"
-            }
-        ],
-        "steps": [
-            "Filling: In saucepan, bring blueberries, sugar and orange juice to boil; reduce heat and simmer until tender, about 10 minutes.",
-            "Whisk cornstarch with 2 tbsp (25 mL) water; whisk into blueberries and boil, stirring, until thickened, about 1 minute.",
-            "Place plastic wrap directly on surface; refrigerate until cooled, about 1 hour.",
-            "In large bowl, whisk together oats, flour, sugar, orange rind and salt ; with pastry blender, cut in butter until in coarse crumbs.",
-            "Press half into 8-inch (2 L) square parchment paper\u2013lined metal cake pan; spread with blueberry filling.",
-            "Bake in centre of 350\u00b0F oven until light golden, about 45 minutes.",
-            "Let cool on rack before cutting into squares.",
-            "(Make-ahead: Cover and refrigerate for up to 2 days or overwrap with heavy-duty foil and freeze for up to 2 weeks.)"
-        ],
-        "timers": 60,
-        "imageURL": "http:\/\/www.canadianliving.com\/img\/photos\/biz\/blueberry-oatmeal-squares5801359401371.jpg",
-        "originalURL": "http:\/\/www.canadianliving.com\/food\/blueberry_oatmeal_squares.php"
-    },
-    {
         "id": 9,
         "name": "Curried chicken salad",
         "ingredients": [
@@ -575,104 +506,40 @@
     },
     {
         "id": 11,
-        "name": "khalil cake",
+        "name": "Spaghetti \u00e0 la Carbonara",
+        "Author": "test1 test1",
         "ingredients": [
-            {
-                "quantity": "1",
-                "name": "beef roast",
-                "type": "Meat"
-            },
-            {
-                "quantity": "1 package",
-                "name": "brown gravy mix",
-                "type": "Baking"
-            }
+            "200g de spaghetti",
+            "100g de pancetta",
+            "2 \u0153ufs",
+            "50g de parmesan r\u00e2p\u00e9",
+            "1 gousse d'ail",
+            "Sel",
+            "Poivre noir"
         ],
         "steps": [
-            "Place beef roast in crock pot.",
-            "Mix the dried mixes together in a bowl and sprinkle over the roast.",
-            "Pour the water around the roast.",
-            "Cook on low for 7-9 hours."
-        ],
-        "timers": 36,
-        "imageURL": "http:\/\/img.sndimg.com\/food\/image\/upload\/w_266\/v1\/img\/recipes\/27\/20\/8\/picVfzLZo.jpg",
-        "originalURL": "http:\/\/www.food.com\/recipe\/to-die-for-crock-pot-roast-27208",
-        "nameFR": "Khalil Gateau",
-        "ingredientsFR": [
-            "1 r\u00f4ti de b\u0153uf",
-            "1 sachet de m\u00e9lange pour sauce brune"
-        ],
-        "stepsFR": [
-            "Placer le r\u00f4ti de b\u0153uf dans la mijoteuse.",
-            "M\u00e9langer les m\u00e9langes secs dans un bol et les saupoudrer sur le r\u00f4ti.",
-            "Verser l'eau autour du r\u00f4ti.",
-            "Cuire \u00e0 feu doux pendant 7 \u00e0 9 heures."
-        ]
-    },
-    {
-        "id": 12,
-        "name": "Khalil is the best",
-        "Author": "Unknown",
-        "ingredients": [
-            "khalil",
-            "kader",
-            "bingo"
-        ],
-        "steps": [
-            "asdfasdfsdfsad",
-            "sdfsdfsdfasdfas",
-            "fasdfsafsdafas",
-            "sadfasdfsafasdf",
+            "Faire cuire les spaghetti dans de l'eau sal\u00e9e selon les instructions du paquet.",
+            "Faire revenir la pancetta avec l'ail dans une po\u00eale jusqu'\u00e0 ce qu'elle soit dor\u00e9e.",
+            "Battre les \u0153ufs dans un bol, ajouter le parmesan, saler et poivrer.",
+            "\u00c9goutter les p\u00e2tes, retirer l'ail de la po\u00eale, puis m\u00e9langer les spaghetti avec la pancetta.",
+            "Retirer du feu et ajouter le m\u00e9lange \u0153ufs\/parmesan tout en remuant.",
+            "Servir chaud avec du poivre frais et un peu de parmesan.",
             ""
         ],
-        "timers": "22",
-        "imageURL": "https:\/\/images.unsplash.com\/photo-1581804928342-4e3405e39c91?auto=format&fit=crop&w=800&q=80",
+        "timers": "20",
+        "imageURL": "https:\/\/images.pexels.com\/photos\/1279330\/pexels-photo-1279330.jpeg",
         "originalURL": "",
-        "nameFR": "ALPH",
+        "nameFR": "jhlskdjfhksdaf",
         "ingredientsFR": [
-            "dsfsd",
-            "sdfsdf",
-            "fsd"
+            "sdfasf",
+            "sdfasdf",
+            "asfasfdasdf"
         ],
         "stepsFR": [
-            "sdfsfsdf,sdfsdf,sdfsdfsdf,sdf"
-        ]
-    },
-    {
-        "id": 13,
-        "name": "Poulet ",
-        "Author": "Jebril Zenasni",
-        "ingredients": [
-            "khlil",
-            "sadsd",
-            "asdasd",
-            "sadasd",
-            "sadasd",
-            "asdasdasd"
-        ],
-        "steps": [
-            "khalisdfas",
-            "dsafsadfsad",
-            "sfasdfsdaf",
-            "Sfdsadf"
-        ],
-        "timers": "33",
-        "imageURL": "https:\/\/media.istockphoto.com\/id\/1399238247\/fr\/photo\/pr%C3%A9paration-de-poulet-r%C3%B4ti-avec-l%C3%A9gumes-racines-dans-la-cuisine-domestique.jpg?s=1024x1024&w=is&k=20&c=jnKb24v9kZJBYmBi2tMDOx196hI2qaF7XK6DZszmkpI=",
-        "originalURL": "",
-        "nameFR": "khalil os boda",
-        "ingredientsFR": [
-            "khlil",
-            "sadsd",
-            "asdasd",
-            "sadasd",
-            "sadasd",
-            "asdasdasd"
-        ],
-        "stepsFR": [
-            "asdas",
-            "ASDasdaS",
-            "Asdasdad",
-            "Asda"
+            "sadfsahfgkajsf",
+            "fsafksjafgasf",
+            "salkgfkashjfasf",
+            "sdf"
         ]
     }
 ]

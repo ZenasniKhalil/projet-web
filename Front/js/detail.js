@@ -153,5 +153,6 @@ likeBtn.addEventListener("click", () => {
     .then((res) => res.json())
     .then(() => {
       refreshLikes(recipeId);
+      location.reload();
     });
 });

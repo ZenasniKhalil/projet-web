@@ -2,6 +2,11 @@ const commentList = document.getElementById("commentList");
 const newCommentContent = document.getElementById("newCommentContent");
 const submitCommentBtn = document.getElementById("submitCommentBtn");
 
+window.addEventListener("DOMContentLoaded", () => {
+  const recipeId = new URLSearchParams(window.location.search).get("id");
+  loadComments(recipeId);
+});
+
 function loadComments(recipeId) {
   fetch(`http://localhost:8080/recette/${recipeId}/comments`)
     .then((res) => res.json())
