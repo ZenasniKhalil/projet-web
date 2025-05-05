@@ -1,74 +1,116 @@
 {
-  "khalil@exemple.fr": {
-    "firstname": "khalil",
-    "lastname": "zenasni",
-    "password": "$2y$12$vyVxMyAi570wY5CUL1x4wuEYzg8.xUOEXmV5veyd4J1M0AeeZfOP2",
-    "role": "admin"
-  },
-  "jebril@exemple.fr": {
-    "firstname": "jebril",
-    "lastname": "zenasni",
-    "password": "$2y$12$KYtznpu3TPZlmAn9VU1UVutYyBOZVFbmrxV1KDKLEN7jO/d5kyQLS",
-    "role": "Traducteur"
-  },
-  "kigg@gmsi.com": {
-    "firstname": "bingo",
-    "lastname": "lavo",
-    "password": "$2y$12$GW5dSGLusntASC3aB0CEO.Cr699NTdxmC8o9ZfZVeLu7EWwT6BvXi",
-    "role": "cuisinier"
-  },
-  "hmida@gmail.com": {
-    "firstname": "Hmida",
-    "lastname": "Setar",
-    "password": "$2y$12$F4bJnUWazwOZcwmSJKeygOeD0uokDFYC6eQ.RNPYHybTsiQvwzRpW",
-    "role": "cuisinier"
-  },
-  "kader.kireche@gmail.com": {
-    "firstname": "Kireche",
-    "lastname": "kader",
-    "password": "$2y$12$SAo9Umm7xIwZv.mLSK1NSOEv4UdL8PO3WZ2SMlM53jCg/oEjMpuHu",
-    "role": "cuisinier"
-  },
-  "zenasni.jebril@gmail.com": {
-    "firstname": "jebril",
-    "lastname": "Zenasni",
-    "password": "$2y$12$w1EkuFOEQbkTpVWCOYaUl.SOsqzOWmqrTYasK2/0aapvBy46pGRw2",
-    "role": "cuisinier"
-  },
-  "z.k@gmail.com": {
-    "firstname": "zenasni",
-    "lastname": "khalil",
-    "password": "$2y$12$u/QSqR3X71c5MqoWS14Oq.z.OdlHctqbFiMyKqqqhSX6qxy5hT76K",
-    "role": "cuisinier"
-  },
-  "ahmed.nouh@gmail.com": {
-    "firstname": "nouh",
-    "lastname": "ahmed",
-    "password": "$2y$12$JcDpYAbtWxTuQg83EDS4E.4BiBq2MXcuOHGdNgIhSd3.yj6krMKp6",
-    "role": "cuisinier"
-  },
-  "zenasni.khalil@outlooook.com": {
-    "firstname": "zenasni",
-    "lastname": "Khalil",
-    "password": "$2y$12$OYq3xAgNaw2ZbMInH8FVn.Q06pG/rawIx../UarCnKvE1owk3P7BK",
-    "role": "cuisinier"
-  },
-  "kader@gmail.com": {
-    "firstname": "Ibrahim",
-    "lastname": "Zenasni",
-    "password": "$2y$12$DQHZ7i4LMuUhddIJS8bDjOlAZDxHc3J6zpcpMBUHKQFlJjeZqP3lG",
-    "role": "Traducteur"
-  },
-  "jebril@gmail.com": {
-    "firstname": "Jebril",
-    "lastname": "Zenasni",
-    "password": "$2y$12$Aw6cw93VMD0auuSU1sFpTeJu5oKFM9ouUDfXhb1ZLcju4NG2/U66W",
-    "role": "Chef"
-  },
-  "khalil@gmail.com": {
-    "firstname": "zenansi",
-    "lastname": "khalil",
-    "password": "$2y$12$fNDvGQjsyxzyojqpQZlL7uiYKuLL80XBrG8ybXCluEI5NyJv9VcWa",
-    "role": "Traducteur"
-  }
+    "khalil@exemple.fr": {
+        "firstname": "khalil",
+        "lastname": "zenasni",
+        "password": "$2y$12$vyVxMyAi570wY5CUL1x4wuEYzg8.xUOEXmV5veyd4J1M0AeeZfOP2",
+        "role": "admin"
+    },
+    "jebril@exemple.fr": {
+        "firstname": "jebril",
+        "lastname": "zenasni",
+        "password": "$2y$12$KYtznpu3TPZlmAn9VU1UVutYyBOZVFbmrxV1KDKLEN7jO\/d5kyQLS",
+        "role": "Traducteur"
+    },
+    "kigg@gmsi.com": {
+        "firstname": "bingo",
+        "lastname": "lavo",
+        "password": "$2y$12$GW5dSGLusntASC3aB0CEO.Cr699NTdxmC8o9ZfZVeLu7EWwT6BvXi",
+        "role": "cuisinier"
+    },
+    "hmida@gmail.com": {
+        "firstname": "Hmida",
+        "lastname": "Setar",
+        "password": "$2y$12$F4bJnUWazwOZcwmSJKeygOeD0uokDFYC6eQ.RNPYHybTsiQvwzRpW",
+        "role": "cuisinier"
+    },
+    "kader.kireche@gmail.com": {
+        "firstname": "Kireche",
+        "lastname": "kader",
+        "password": "$2y$12$SAo9Umm7xIwZv.mLSK1NSOEv4UdL8PO3WZ2SMlM53jCg\/oEjMpuHu",
+        "role": "cuisinier"
+    },
+    "zenasni.jebril@gmail.com": {
+        "firstname": "jebril",
+        "lastname": "Zenasni",
+        "password": "$2y$12$w1EkuFOEQbkTpVWCOYaUl.SOsqzOWmqrTYasK2\/0aapvBy46pGRw2",
+        "role": "cuisinier"
+    },
+    "z.k@gmail.com": {
+        "firstname": "zenasni",
+        "lastname": "khalil",
+        "password": "$2y$12$u\/QSqR3X71c5MqoWS14Oq.z.OdlHctqbFiMyKqqqhSX6qxy5hT76K",
+        "role": "Chef"
+    },
+    "ahmed.nouh@gmail.com": {
+        "firstname": "nouh",
+        "lastname": "ahmed",
+        "password": "$2y$12$JcDpYAbtWxTuQg83EDS4E.4BiBq2MXcuOHGdNgIhSd3.yj6krMKp6",
+        "role": "cuisinier"
+    },
+    "zenasni.khalil@outlooook.com": {
+        "firstname": "zenasni",
+        "lastname": "Khalil",
+        "password": "$2y$12$OYq3xAgNaw2ZbMInH8FVn.Q06pG\/rawIx..\/UarCnKvE1owk3P7BK",
+        "role": "Chef"
+    },
+    "kader@gmail.com": {
+        "firstname": "Ibrahim",
+        "lastname": "Zenasni",
+        "password": "$2y$12$DQHZ7i4LMuUhddIJS8bDjOlAZDxHc3J6zpcpMBUHKQFlJjeZqP3lG",
+        "role": "Traducteur"
+    },
+    "jebril@gmail.com": {
+        "firstname": "Jebril",
+        "lastname": "Zenasni",
+        "password": "$2y$12$Aw6cw93VMD0auuSU1sFpTeJu5oKFM9ouUDfXhb1ZLcju4NG2\/U66W",
+        "role": "Chef"
+    },
+    "khalil@gmail.com": {
+        "firstname": "zenansi",
+        "lastname": "khalil",
+        "password": "$2y$12$fNDvGQjsyxzyojqpQZlL7uiYKuLL80XBrG8ybXCluEI5NyJv9VcWa",
+        "role": "Traducteur"
+    },
+    "khalilo@gmail.com": {
+        "firstname": "zenasni",
+        "lastname": "khalil",
+        "password": "$2y$12$YAt6AdIeLCmEdkSKQabTMuhO8M.xtCefVPacdYnFo1O8zbwRUzoh6",
+        "role": "Admin"
+    },
+    "ss@gmail.com": {
+        "firstname": "Donfa",
+        "lastname": "Kimo",
+        "password": "$2y$12$dT6pbCi64WeCkUWc2WfiMetXDwmkbMAgHa6hoxbsiJowyezOv2ie.",
+        "role": "cuisinier"
+    },
+    "kiok@sdfdf.com": {
+        "firstname": "dsfsdf",
+        "lastname": "sdfsd",
+        "password": "$2y$12$.pMvVpi2RDisyV\/UuBipWeX.D76XrzRMohIaosoyjxJHdg.4cGD7e",
+        "role": "Traducteur"
+    },
+    "test@gmail.com": {
+        "firstname": "test",
+        "lastname": "test",
+        "password": "$2y$12$pQj\/wJuBm5afQwCkl.sV2ua6RRsQQg8bH2SZ3qbt5mb5fkhTB1e3e",
+        "role": "cuisinier"
+    },
+    "binga@gmai.com": {
+        "firstname": "binga",
+        "lastname": "binga",
+        "password": "$2y$12$9eT2VDwbqBAg2umhURdGoeZDvQnSBIFKimP7eyXUHPBzaD05CK90e",
+        "role": "Traducteur"
+    },
+    "midou@gmail.com": {
+        "firstname": "midou",
+        "lastname": "midou",
+        "password": "$2y$12$X0w29Pmvdpbdblwbdxgg.eyRe3oWn000fYngGC5kzGG\/qq49aeUPm",
+        "role": "Chef"
+    },
+    "youcef@gmail.com": {
+        "firstname": "youcef",
+        "lastname": "youcef",
+        "password": "$2y$12$6Ka3vjDnvHp4AQbY2\/\/U..8YGUFy3TgwicDZkuBKgKpDiG3qTALPy",
+        "role": "cuisinier"
+    }
 }

@@ -27,13 +27,6 @@ class AuthController {
             return;
         }
     
-        // Récupérer les données depuis $_POST
-        // $firstname = filter_input(INPUT_POST, 'firstname');
-        // $lastname = filter_input(INPUT_POST, 'lastname');
-        // $requestedRole = filter_input(INPUT_POST, 'role');
-        // $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
-        // $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-
         // ✅ Lire le JSON brut
     $data = json_decode(file_get_contents("php://input"), true);
 
@@ -61,23 +54,13 @@ class AuthController {
             return;
         }
 
-         // 🔹 Rôle par défaut : "cuisinier"
-         $role = 'cuisinier';
 
-         // 🔹 Si l'utilisateur demande un rôle spécial, il devient une demande
-         if ($requestedRole === 'Traducteur') {
-            $role = 'DemandeTraducteur';
-         } elseif ($requestedRole === 'Chef') {
-            $role = 'DemandeChef';
-         }
-
-    
         // Ajouter l'utilisateur
         $users[$email] = [
             'firstname' => $firstname,
             'lastname' => $lastname,
             'password' => password_hash($password, PASSWORD_DEFAULT),
-            'role' => $role
+            'role' => $requestedRole
         ];
         
         file_put_contents($this->filePath, json_encode($users, JSON_PRETTY_PRINT));

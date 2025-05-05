@@ -68,26 +68,26 @@ $router->register('GET', '/recette/{id}/liked', function ($params) {
 });
 
 // ## 🔹 GESTION DES UTILISATEURS (Admin)
-// $router->register('GET', '/admin/users', function () {
-//     (new AdminController())->getUsers();
-// });
+$router->register('GET', '/admin/pending', function () {
+    (new AdminController())->getPendingUsers();
+});
 
 $router->register('POST', '/admin/changeRole/{email}', function ($params) {
     (new AdminController())->changeRole($params['email']);
 });
 
-// ## 🔹 INTERACTIONS (Commentaires, Likes, Photos)
-// $router->register('POST', '/recette/{id}/comment', function ($params) {
-//     (new InteractionController())->addComment($params[0]);
-// });
+$router->register('POST', '/admin/refuseRole/{email}', function ($params) {
+    (new AdminController())->RefuseRole($params['email']);
+});
 
-// $router->register('POST', '/recette/{id}/like', function ($params) {
-//     (new InteractionController())->addLike($params[0]);
-// });
+$router->register('GET', '/recette/{id}/comments', function ($params) {
+    (new InteractionController())->getComments($params['id']);
+});
 
-// $router->register('POST', '/recette/{id}/upload', function ($params) {
-//     (new InteractionController())->uploadPhoto($params[0]);
-// });
+$router->register('POST', '/recette/{id}/comment', function ($params) {
+    (new InteractionController())->addComment($params['id']);
+});
+
 
 ## 🔹 DISPATCH LA REQUÊTE ENTRANTE
 $router->handleRequest();
